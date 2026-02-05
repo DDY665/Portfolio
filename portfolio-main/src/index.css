@@ -1,0 +1,183 @@
+@import "tailwindcss";
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Cursor */
+.cursor::after {
+  content: "|";
+  margin-left: 6px;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0; }
+}
+
+/* =========================================================
+   THEME VARIABLES
+========================================================= */
+
+body {
+  --bg-main: #101010;
+  --text-main: #c6c6c6;
+  --text-soft: #9aa0a6;
+  --text-strong: #ffffff;
+
+  --glass-bg: rgba(22,22,22,0.14);
+  --glass-border: rgba(255,255,255,0.10);
+
+  --scroll-thumb: rgba(200,200,200,0.28);
+  --scroll-thumb-hover: rgba(200,200,200,0.48);
+
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  font-family: "JetBrains Mono", monospace;
+  overflow-x: hidden;
+}
+
+/* Light theme */
+body.light {
+  --bg-main: #f6f7f9;
+  --text-main: #111111;
+  --text-soft: #444444;
+  --text-strong: #000000;
+
+  --glass-bg: rgba(255,255,255,0.28);
+  --glass-border: rgba(0,0,0,0.12);
+
+  --scroll-thumb: rgba(0,0,0,0.28);
+  --scroll-thumb-hover: rgba(0,0,0,0.48);
+
+  background-color: var(--bg-main);
+  color: var(--text-main);
+}
+
+/* =========================================================
+   FLAT MATRIX GRID BACKGROUND (original one you liked)
+========================================================= */
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+
+  background-image:
+    linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
+
+  background-size: 64px 64px;
+}
+
+body.light::after {
+  background-image:
+    linear-gradient(rgba(0,0,0,0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.08) 1px, transparent 1px);
+}
+
+/* Subtle ambient glow */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255,255,255,0.05), transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(255,255,255,0.04), transparent 55%);
+}
+
+body.light::before {
+  background: none;
+}
+
+/* =========================================================
+   MODAL OVERLAY
+========================================================= */
+
+.modal-overlay {
+  background: rgba(0,0,0,0.45);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+
+body.light .modal-overlay {
+  background: rgba(255,255,255,0.55);
+}
+
+/* =========================================================
+   GLASS
+========================================================= */
+
+.glass {
+  background: var(--glass-bg);
+
+  -webkit-backdrop-filter: blur(42px) saturate(160%);
+  backdrop-filter: blur(42px) saturate(160%);
+
+  border-radius: 18px;
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+
+  transform: translateZ(0);
+  will-change: backdrop-filter, transform;
+
+  contain: paint;
+  isolation: isolate;
+
+  transition: backdrop-filter 0.25s ease, transform 0.25s ease;
+}
+
+/* =========================================================
+   TEXT UTILITIES
+========================================================= */
+
+.text-main { color: var(--text-main); }
+.text-soft { color: var(--text-soft); }
+.text-strong { color: var(--text-strong); }
+
+/* =========================================================
+   PAGE FADE
+========================================================= */
+
+@keyframes fade {
+  from { opacity: 0; transform: translateY(12px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.animate-fade {
+  animation: fade 0.45s cubic-bezier(0.22,1,0.36,1);
+}
+
+/* Selection */
+::selection {
+  background: rgba(255,255,255,0.25);
+  color: #000;
+}
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
+.terminal-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scroll-thumb) transparent;
+}
+
+.terminal-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.terminal-scroll::-webkit-scrollbar-thumb {
+  background: var(--scroll-thumb);
+  border-radius: 10px;
+}
+
+.terminal-scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--scroll-thumb-hover);
+}
