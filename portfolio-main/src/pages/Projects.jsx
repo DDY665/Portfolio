@@ -12,12 +12,12 @@ const projects = [
   {
     id: "nourishnet",
     title: "NourishNet — Linking Surplus to Support",
-    desc: "Hackathon MERN platform connecting food donors, NGOs and volunteers with real-time coordination, dashboards and geolocation tracking.",
+    desc: "MERN platform connecting food donors, NGOs and volunteers with real-time coordination, dashboards and geolocation tracking.",
     github: "https://github.com/DDY665",
   },
   {
     id: "fixmycity",
-    title: "FixMyCity — Civic Issue Reporting",
+    title: "FixMyCity — Civic Issue Reporting (Ongoing)",
     desc: "Citizen-to-authority issue reporting system with live tracking, image uploads, role dashboards and real-time updates.",
     github: "https://github.com/DDY665",
   },
