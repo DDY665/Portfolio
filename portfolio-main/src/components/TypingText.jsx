@@ -26,7 +26,6 @@ export default function TypingText({
 
     return () => clearInterval(interval);
 
-    // ❗ ONLY trigger here — NOTHING else
   }, [trigger]);
 
   return (

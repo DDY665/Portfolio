@@ -5,6 +5,7 @@ export default function Hero({ page }) {
   const [showOutput, setShowOutput] = useState(false);
   const [typingKey, setTypingKey] = useState(0);
 
+
   useEffect(() => {
     if (page === "home") {
       setShowOutput(false);
@@ -21,14 +22,12 @@ export default function Hero({ page }) {
           font-[JetBrains_Mono]
         "
       >
-        {/* Typing command */}
         <TypingText
           text="> whoami"
           trigger={typingKey}
           onDone={() => setShowOutput(true)}
         />
 
-        {/* Output */}
         <div
           className={`transition-all duration-700 ease-out ${
             showOutput

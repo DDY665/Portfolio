@@ -55,7 +55,6 @@ export default function App() {
             lg:px-16
           "
         >
-          {/* 🔥 Universal responsive container */}
           <div className="w-full max-w-screen-2xl mx-auto">
             {renderPage()}
           </div>

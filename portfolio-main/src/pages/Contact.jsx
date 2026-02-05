@@ -22,15 +22,14 @@ export default function Contact() {
     setSending(true);
     setStatus("");
 
-    emailjs
-      .send(
-        "service_gs3twui",
-        "template_od7ce5v",
-        form,
-        "zrDjN4sFjPnbBUPUi"
-      )
+    emailjs.send(
+      import.meta.env.VITE_EMAILJS_SERVICE_ID,
+      import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+      form,
+      import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+    )
       .then(() => {
-        setStatus("Message sent successfully ✅");
+        setStatus("Message sent successfully ");
         setForm({
           from_name: "",
           from_email: "",
@@ -39,7 +38,7 @@ export default function Contact() {
         });
       })
       .catch(() => {
-        setStatus("Failed to send message ❌");
+        setStatus("Failed to send message ");
       })
       .finally(() => setSending(false));
   };
@@ -48,10 +47,8 @@ export default function Contact() {
     <div className="w-full mt-6 sm:mt-10 space-y-10">
       <TypingText text="> contact --let's connect" speed={40} />
 
-      {/* Responsive Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
 
-        {/* LEFT SIDE */}
         <div className="space-y-6 lg:col-span-1">
           <div className="glass p-6 sm:p-8">
             <h3 className="text-xl mb-6 text-main font-semibold">
@@ -92,7 +89,6 @@ export default function Contact() {
           </div>
         </div>
 
-        {/* RIGHT SIDE */}
         <div className="glass p-6 sm:p-8 md:p-10 lg:col-span-2">
           <h3 className="text-2xl mb-8 text-main font-semibold">
             Send a Message

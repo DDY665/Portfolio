@@ -1,15 +1,12 @@
 import { useEffect, useState } from "react";
 
 export default function Navbar({ setPage, page, openResume }) {
-  // 🌗 Persist theme
   const [light, setLight] = useState(
     localStorage.getItem("theme") === "light"
   );
 
-  // 🎯 Navbar visibility on scroll
   const [visible, setVisible] = useState(true);
 
-  // Apply theme
   useEffect(() => {
     if (light) {
       document.body.classList.add("light");
@@ -20,7 +17,6 @@ export default function Navbar({ setPage, page, openResume }) {
     }
   }, [light]);
 
-  // Hide / show navbar on scroll
   useEffect(() => {
     let lastScroll = window.scrollY;
 

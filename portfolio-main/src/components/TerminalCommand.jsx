@@ -7,7 +7,6 @@ export default function TerminalCommand({ setPage, openResume }) {
 
   const historyRef = useRef(null);
 
-  // Open terminal with "/"
   useEffect(() => {
     const handleKey = (e) => {
       if (e.key === "/") {
@@ -23,7 +22,6 @@ export default function TerminalCommand({ setPage, openResume }) {
     return () => window.removeEventListener("keydown", handleKey);
   }, []);
 
-  // Auto scroll to bottom
   useEffect(() => {
     if (historyRef.current) {
       historyRef.current.scrollTop = historyRef.current.scrollHeight;
@@ -36,13 +34,11 @@ const runCommand = (cmd) => {
   const c = cmd.trim().toLowerCase();
   print(`> ${c}`);
 
-  // ================= NAVIGATION =================
   if (["home", "about", "projects", "stack", "contact"].includes(c)) {
     setPage(c);
     setOpen(false);
   }
 
-  // ================= THEME =================
   else if (c === "theme light") {
     document.body.classList.add("light");
     print("Switched to light theme.");
@@ -52,7 +48,6 @@ const runCommand = (cmd) => {
     print("Switched to dark theme.");
   }
 
-  // ================= RESUME =================
   else if (c === "resume") {
     openResume();
     setOpen(false);
@@ -62,7 +57,6 @@ const runCommand = (cmd) => {
     setOpen(false);
   }
 
-  // ================= PROJECT SHORTCUTS =================
   else if (c.startsWith("project ")) {
     const name = c.replace("project ", "");
 
@@ -81,7 +75,6 @@ const runCommand = (cmd) => {
     }
   }
 
-  // ================= EASTER EGGS (RESTORED) =================
   else if (c === "who is darvish") {
     print("Darvish is a Full Stack Developer who loves solving real-world problems.");
     print("Special ability: turns coffee into scalable systems ☕");
@@ -92,7 +85,6 @@ const runCommand = (cmd) => {
     print("Pleasure to make your acquaintance. Let's build something legendary. 🤝🚀");
   }
 
-  // ================= HELP =================
   else if (c === "help") {
     print("Navigation: home · about · projects · stack · contact");
     print("Theme: theme light · theme dark");
@@ -102,12 +94,10 @@ const runCommand = (cmd) => {
     print("Utility: clear · exit");
   }
 
-  // ================= EXIT =================
   else if (c === "exit") {
     setOpen(false);
   }
 
-  // ================= CLEAR =================
   else if (c === "clear") {
     setHistory([]);
   }
@@ -130,7 +120,6 @@ const runCommand = (cmd) => {
         <p className="text-main mb-2">{">"} terminal</p>
         <p className="text-soft text-xs mb-4">type 'help'</p>
 
-        {/* History */}
         <div
           ref={historyRef}
           className="h-64 overflow-y-auto mb-4 text-sm text-main whitespace-pre leading-6 pr-2 terminal-scroll"
@@ -140,7 +129,6 @@ const runCommand = (cmd) => {
           ))}
         </div>
 
-        {/* Input */}
         <div className="flex items-center border border-dim/30 rounded-md px-3 py-2">
           <span className="text-soft mr-2">{">"}</span>
           <input

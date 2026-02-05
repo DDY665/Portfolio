@@ -30,7 +30,6 @@ export default function Projects() {
     <div className="w-full mt-6 sm:mt-10">
       <TypingText text="> projects --featured" speed={40} />
 
-      {/* Layout container */}
       <div className="mt-8 flex flex-col lg:flex-row gap-6 lg:h-[380px]">
         {projects.map((p) => {
           const isActive = active === p.id;
@@ -51,13 +50,11 @@ export default function Projects() {
                 ${isActive ? "lg:flex-[3]" : "lg:flex-1 lg:opacity-60"}
               `}
             >
-              {/* Title */}
               <div>
                 <p className="text-main font-[JetBrains_Mono] text-lg sm:text-xl mb-4">
                   {">"} {p.title}
                 </p>
 
-                {/* Description — always visible on mobile */}
                 <div
                   className={`
                     transition-all duration-500
@@ -71,7 +68,6 @@ export default function Projects() {
                 </div>
               </div>
 
-              {/* GitHub button */}
               <div
                 className={`
                   transition-all duration-500 mt-6

@@ -24,12 +24,10 @@ import {
 
 const Section = ({ title, items }) => (
   <div className="space-y-10">
-    {/* Section title */}
     <p className="text-main font-[JetBrains_Mono] font-bold text-xl sm:text-2xl">
       {">"} {title}
     </p>
 
-    {/* Proper responsive grid */}
     <div
       className="
         grid

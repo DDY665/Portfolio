@@ -11,10 +11,8 @@ export default function About() {
           font-[JetBrains_Mono]
         "
       >
-        {/* Typing Header */}
         <TypingText text="> about --me" speed={40} />
 
-        {/* Content */}
         <p
           className="
             mt-8

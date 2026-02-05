@@ -17,15 +17,13 @@ export default function Footer() {
           max-w-[420px]   /* keeps the small pill width you want */
         "
       >
-        {/* Terminal signature */}
+       
         <span className="text-soft whitespace-nowrap">
           darvish@portfolio $
         </span>
 
-        {/* Divider */}
         <span className="opacity-40 hidden sm:block">|</span>
 
-        {/* Icons */}
         <div className="flex items-center gap-4 sm:gap-5 text-base sm:text-lg">
           <a
             href="https://github.com/DDY665"
