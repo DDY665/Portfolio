@@ -30,7 +30,7 @@ export default function Projects() {
     <div className="w-full mt-6 sm:mt-10">
       <TypingText text="> projects --featured" speed={40} />
 
-      <div className="mt-8 flex flex-col lg:flex-row gap-6 lg:h-[380px]">
+      <div className="mt-8 flex flex-col lg:flex-row gap-6 lg:h-95">
         {projects.map((p) => {
           const isActive = active === p.id;
 
@@ -39,16 +39,8 @@ export default function Projects() {
               key={p.id}
               onMouseEnter={() => setActive(p.id)}
               onMouseLeave={() => setActive(null)}
-              className={`
-                glass
-                p-6 sm:p-8
-                flex flex-col justify-between
-                transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)]
-                cursor-pointer
-
-                w-full
-                ${isActive ? "lg:flex-[3]" : "lg:flex-1 lg:opacity-60"}
-              `}
+              className={`glass p-6 sm:p-8 flex flex-col justify-between transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] cursor-pointer w-full
+                ${isActive ? "lg:flex-3" : "lg:flex-1 lg:opacity-60"}`}
             >
               <div>
                 <p className="text-main font-[JetBrains_Mono] text-lg sm:text-xl mb-4">
