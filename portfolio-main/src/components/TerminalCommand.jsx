@@ -53,7 +53,7 @@ const runCommand = (cmd) => {
     setOpen(false);
   }
   else if (c === "download resume") {
-    window.open("/resume.pdf", "_blank");
+    window.open("/Resume(current).pdf", "_blank");
     setOpen(false);
   }
 
