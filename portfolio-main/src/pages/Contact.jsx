@@ -22,14 +22,15 @@ export default function Contact() {
     setSending(true);
     setStatus("");
 
-    emailjs.send(
-      import.meta.env.VITE_EMAILJS_SERVICE_ID,
-      import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-      form,
-      import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-    )
+    emailjs
+      .send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        form,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      )
       .then(() => {
-        setStatus("Message sent successfully ");
+        setStatus("Message sent successfully.");
         setForm({
           from_name: "",
           from_email: "",
@@ -38,7 +39,7 @@ export default function Contact() {
         });
       })
       .catch(() => {
-        setStatus("Failed to send message ");
+        setStatus("Failed to send message.");
       })
       .finally(() => setSending(false));
   };
@@ -48,26 +49,28 @@ export default function Contact() {
       <TypingText text="> contact --let's connect" speed={40} />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-
+        {/* Left Column */}
         <div className="space-y-6 lg:col-span-1">
+          {/* Contact Information */}
           <div className="glass p-6 sm:p-8">
             <h3 className="text-xl mb-6 text-main font-semibold">
               Contact Information
             </h3>
 
-            <div className="space-y-3 text-dim text-sm sm:text-base">
+            <div className="space-y-3 text-soft text-sm sm:text-base">
               <p>Email: darvishyadav6655@gmail.com</p>
               <p>Phone: +91 81256 37200</p>
               <p>Location: Hyderabad, India</p>
             </div>
           </div>
 
+          {/* Social Profiles */}
           <div className="glass p-6 sm:p-8">
             <h3 className="text-xl mb-6 text-main font-semibold">
               Social Profiles
             </h3>
 
-            <div className="space-y-3 text-dim text-sm sm:text-base">
+            <div className="space-y-3 text-soft text-sm sm:text-base">
               <a
                 href="https://github.com/DDY665"
                 target="_blank"
@@ -78,7 +81,7 @@ export default function Contact() {
               </a>
 
               <a
-                href="https://www.linkedin.com/in/darvish-yadav-a37134246/"
+                href="https://www.linkedin.com/in/darvish-yadav-dega-a37134246/"
                 target="_blank"
                 rel="noreferrer"
                 className="block hover:text-main transition"
@@ -87,8 +90,21 @@ export default function Contact() {
               </a>
             </div>
           </div>
+
+          {/* Availability */}
+          <div className="glass p-6 sm:p-8">
+            <h3 className="text-xl mb-6 text-main font-semibold">
+              Currently Available
+            </h3>
+
+            <p className="text-soft text-sm sm:text-base leading-7 font-[Inter]">
+              Open to full-time roles, internships, freelance work, and
+              interesting projects. I typically reply within 24 hours.
+            </p>
+          </div>
         </div>
 
+        {/* Contact Form */}
         <div className="glass p-6 sm:p-8 md:p-10 lg:col-span-2">
           <h3 className="text-2xl mb-8 text-main font-semibold">
             Send a Message
@@ -142,12 +158,14 @@ export default function Contact() {
               disabled={sending}
               className="
                 w-full
-                border border-main
+                border
+                border-main
                 text-main
                 font-semibold
                 py-4
                 rounded-md
-                hover:bg-main hover:text-bg
+                hover:bg-main
+                hover:text-bg
                 transition
                 cursor-pointer
                 disabled:cursor-not-allowed

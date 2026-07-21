@@ -75,8 +75,8 @@ export default function Navbar({ setPage, page, openResume }) {
           projects
         </button>
 
-        <button onClick={() => setPage("stack")} className={linkClass("stack")}>
-          stack
+        <button onClick={() => setPage("skills")} className={linkClass("skills")}>
+          skills
         </button>
 
         <button onClick={() => setPage("contact")} className={linkClass("contact")}>

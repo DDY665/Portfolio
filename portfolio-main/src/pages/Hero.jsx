@@ -1,78 +1,151 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { FaGithub, FaLinkedin, FaEnvelope, FaFileAlt } from "react-icons/fa";
 import TypingText from "../components/TypingText";
 
-export default function Hero({ page }) {
+export default function Hero({ page, setPage, openTerminal }) {
+  return (
+    <div key={page} className="w-full mt-6 sm:mt-10 flex justify-center">
+      <HeroContent
+        setPage={setPage}
+        openTerminal={openTerminal}
+      />
+    </div>
+  );
+}
+
+function HeroContent({ openTerminal, setPage }) {
   const [showOutput, setShowOutput] = useState(false);
-  const [typingKey, setTypingKey] = useState(0);
-
-
-  useEffect(() => {
-    if (page === "home") {
-      setShowOutput(false);
-      setTypingKey((k) => k + 1);
-    }
-  }, [page]);
 
   return (
-    <div className="w-full mt-6 sm:mt-10">
-      <div
-        className="
-          glass
-          p-6 sm:p-10 md:p-14 lg:p-16
-          font-[JetBrains_Mono]
-        "
-      >
+    <div
+      className="
+        w-fit
+        max-w-3xl
+        font-[JetBrains_Mono]
+        flex flex-col items-center
+      "
+    >
+      {/* Left-aligned group: whoami + name */}
+      <div className="self-start text-left w-full">
         <TypingText
           text="> whoami"
-          trigger={typingKey}
           onDone={() => setShowOutput(true)}
         />
 
-        <div
-          className={`transition-all duration-700 ease-out ${
-            showOutput
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-4"
-          }`}
+        <h1
+          className={`
+            mt-6
+            font-[JetBrains_Mono]
+            font-bold
+            text-main
+            leading-tight
+            text-4xl sm:text-5xl md:text-6xl lg:text-7xl
+            tracking-wide
+            whitespace-nowrap
+            transition-all duration-700 ease-out
+            ${showOutput ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}
+          `}
         >
-          <h1
-            className="
-              mt-6
-              font-[Inter]
-              font-semibold
-              text-main
-              leading-tight
-              text-3xl sm:text-4xl md:text-5xl lg:text-6xl
-            "
-          >
-            Darvish
-          </h1>
+          DARVISH YADAV
+        </h1>
+      </div>
 
-          <p
-            className="
-              mt-6
-              text-base sm:text-lg md:text-xl
-              text-dim
-              font-[Inter]
-              leading-relaxed
-              max-w-3xl
-            "
-          >
-            A Computer Science student passionate about building practical
-            solutions to real-world problems through code and a part-time nerd...
-          </p>
+      {/* Centered group: everything else */}
+      <div
+        className={`transition-all duration-700 ease-out flex flex-col items-center text-center ${
+          showOutput
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-4"
+        }`}
+      >
+        <p
+          className="
+            mt-4
+            text-sm sm:text-base md:text-lg
+            text-soft
+            font-[JetBrains_Mono]
+            tracking-widest
+            uppercase
+          "
+        >
+          Backend Dev · AI · RAG 
+        </p>
 
-          <p
-            className="
-              mt-6
-              text-base sm:text-lg
-              text-dim
-              font-[Inter]
-              leading-relaxed
-            "
+        {/* Social icons */}
+        <div className="flex items-center gap-4 mt-8">
+          <a
+            href="mailto:darvishyadav665@gmail.com"
+            className="w-11 h-11 flex items-center justify-center rounded-full border border-current/20 bg-current/5 text-main hover:bg-current/10 transition-all duration-300"
+            aria-label="Email"
           >
-            Press / to access command mode
-          </p>
+            <FaEnvelope size={16} />
+          </a>
+
+          <a
+            href="https://www.linkedin.com/in/darvish-yadav-dega-a37134246/"
+            target="_blank"
+            rel="noreferrer"
+            className="w-11 h-11 flex items-center justify-center rounded-full border border-current/20 bg-current/5 text-main hover:bg-current/10 transition-all duration-300"
+            aria-label="LinkedIn"
+          >
+            <FaLinkedin size={16} />
+          </a>
+
+          <a
+            href="https://github.com/DDY665"
+            target="_blank"
+            rel="noreferrer"
+            className="w-11 h-11 flex items-center justify-center rounded-full border border-current/20 bg-current/5 text-main hover:bg-current/10 transition-all duration-300"
+            aria-label="GitHub"
+          >
+            <FaGithub size={16} />
+          </a>
+        </div>
+
+        {/* Buttons: desktop */}
+        <div className="hidden sm:flex items-center gap-4 mt-8">
+          <button
+            onClick={() => setPage("contact")}
+            className="px-6 py-3 rounded-lg font-semibold hover:opacity-90 transition-all duration-300"
+            style={{
+              backgroundColor: "var(--text-strong)",
+              color: "var(--bg-main)",
+            }}
+          >
+            Contact Me
+          </button>
+
+          <button
+            onClick={() => setPage("projects")}
+            className="px-6 py-3 rounded-lg border border-current/30 text-main font-semibold hover:bg-current/10 transition-all duration-300"
+          >
+            View Projects
+          </button>
+        </div>
+
+        <p className="hidden sm:block mt-6 text-sm text-soft">
+          Press / to access command mode
+        </p>
+
+        {/* Buttons: mobile */}
+        <div className="flex sm:hidden flex-col w-full gap-3 mt-8">
+          <button
+            onClick={openTerminal}
+            className="px-6 py-3 rounded-lg font-semibold transition-all duration-300"
+            style={{
+              backgroundColor: "var(--text-strong)",
+              color: "var(--bg-main)",
+            }}
+          >
+            Access Command Mode
+          </button>
+
+          <button
+            onClick={() => setPage("projects")}
+            className="px-6 py-3 rounded-lg border border-current/30 text-main font-semibold text-center hover:bg-current/10 transition-all duration-300"
+          >
+            View Projects
+          </button>
         </div>
       </div>
     </div>

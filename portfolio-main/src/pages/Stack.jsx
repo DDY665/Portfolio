@@ -6,7 +6,7 @@ import {
   FaPython,
   FaJava,
   FaGitAlt,
-  FaGithub
+  FaDocker,
 } from "react-icons/fa";
 
 import {
@@ -16,11 +16,18 @@ import {
   SiMysql,
   SiExpress,
   SiPostman,
-  SiFigma,
-  SiHtml5,
-  SiCss3
+  SiFastapi,
+  SiSpring,
+  SiJsonwebtokens,
 } from "react-icons/si";
 
+import {
+  TbApi,
+  TbCpu,
+  TbSearch,
+  TbBrain,
+  TbDatabaseSearch,
+} from "react-icons/tb";
 
 const Section = ({ title, items }) => (
   <div className="space-y-10">
@@ -61,47 +68,46 @@ const Section = ({ title, items }) => (
   </div>
 );
 
-export default function Stack() {
+export default function Skills() {
   return (
     <div className="w-full mt-6 sm:mt-10 space-y-16">
-      <TypingText text="> stack --tech" speed={40} />
+      <TypingText text="> skills --tech" speed={40} />
 
       <Section
-        title="Programming Languages"
+        title="Languages & Frameworks"
         items={[
           { Icon: SiCplusplus, label: "C / C++" },
-          { Icon: FaPython, label: "Python" },
           { Icon: FaJava, label: "Java" },
+          { Icon: FaPython, label: "Python" },
           { Icon: SiJavascript, label: "JavaScript" },
-        ]}
-      />
-
-      <Section
-        title="Development"
-        items={[
-          { Icon: SiHtml5, label: "HTML" },
-          { Icon: SiCss3, label: "CSS" },
           { Icon: FaReact, label: "React.js" },
           { Icon: FaNodeJs, label: "Node.js" },
           { Icon: SiExpress, label: "Express.js" },
+          { Icon: SiFastapi, label: "FastAPI" },
+          { Icon: SiSpring, label: "Spring Boot" },
         ]}
       />
 
       <Section
-        title="Database"
+        title="AI/ML & Databases"
         items={[
+          { Icon: TbBrain, label: "LangChain" },
+          { Icon: TbSearch, label: "RAG Pipelines" },
+          { Icon: TbDatabaseSearch, label: "FAISS" },
+          { Icon: TbCpu, label: "Transformers" },
           { Icon: SiMongodb, label: "MongoDB" },
           { Icon: SiMysql, label: "MySQL" },
         ]}
       />
 
       <Section
-        title="Tools"
+        title="Tools & Technologies"
         items={[
+          { Icon: TbApi, label: "REST APIs" },
+          { Icon: SiJsonwebtokens, label: "JWT Authentication" },
           { Icon: FaGitAlt, label: "Git" },
-          { Icon: FaGithub, label: "GitHub" },
           { Icon: SiPostman, label: "Postman" },
-          { Icon: SiFigma, label: "Figma" },
+          { Icon: FaDocker, label: "Docker" },
         ]}
       />
     </div>

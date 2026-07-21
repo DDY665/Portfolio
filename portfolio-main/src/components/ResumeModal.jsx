@@ -33,7 +33,7 @@ export default function ResumeModal({ open, onClose }) {
         </p>
 
         <a
-          href="/Resume(current).pdf"
+          href="/DarvishYadav_.pdf"
           target="_blank"
           rel="noreferrer"
           className="border border-main text-main py-3 rounded-md text-center
@@ -44,7 +44,7 @@ export default function ResumeModal({ open, onClose }) {
         </a>
 
         <a
-          href="/Resume(current).pdf"
+          href="/DarvishYadav_.pdf"
           download
           className="border border-main text-main py-3 rounded-md text-center
                      hover:bg-main hover:text-[var(--bg-main)]

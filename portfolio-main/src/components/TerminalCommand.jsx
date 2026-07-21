@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
-export default function TerminalCommand({ setPage, openResume }) {
-  const [open, setOpen] = useState(false);
+export default function TerminalCommand({ setPage, openResume, open, setOpen }) {
+  // ❌ removed: const [open, setOpen] = useState(false);
   const [input, setInput] = useState("");
   const [history, setHistory] = useState([]);
 
@@ -20,7 +20,9 @@ export default function TerminalCommand({ setPage, openResume }) {
     };
     window.addEventListener("keydown", handleKey);
     return () => window.removeEventListener("keydown", handleKey);
-  }, []);
+  }, [setOpen]); // ✅ added setOpen to deps (it's stable, but keeps eslint happy)
+
+  // ...rest of the file unchanged
 
   useEffect(() => {
     if (historyRef.current) {
@@ -53,7 +55,7 @@ const runCommand = (cmd) => {
     setOpen(false);
   }
   else if (c === "download resume") {
-    window.open("/Resume(current).pdf", "_blank");
+    window.open("/DarvishYadav_.pdf", "_blank");
     setOpen(false);
   }
 
@@ -63,7 +65,11 @@ const runCommand = (cmd) => {
     const links = {
       ums: "https://github.com/DDY665/ums",
       nourishnet: "https://github.com/DDY665/nourishnet",
-      fixmycity: "https://github.com/DDY665",
+      hybridRAG: "https://github.com/DDY665/Hybrid-RAG-System-Production-Grade-",
+      wireless_ids: "https://github.com/DDY665/wireless-ids-ai-2",
+      Cloud_Sync_Engine: "https://github.com/DDY665",
+      github_pr_review_dashboard: "https://github.com/DDY665"
+
     };
 
     if (links[name]) {
@@ -71,7 +77,7 @@ const runCommand = (cmd) => {
       window.open(links[name], "_blank");
       setOpen(false);
     } else {
-      print("Project not found. Try: ums · nourishnet · fixmycity");
+      print("Project not found. Try: ums · nourishnet · hybridRAG · wirelessIDS · Cloud-Sync-Engine · github-pr-review-dashboard");
     }
   }
 
@@ -89,7 +95,7 @@ const runCommand = (cmd) => {
     print("Navigation: home · about · projects · stack · contact");
     print("Theme: theme light · theme dark");
     print("Resume: resume · download resume");
-    print("Projects: project ums · project nourishnet · project fixmycity");
+    print("Projects: project ums · project nourishnet · project hybridRAG · project wirelessIDS · project Cloud-Sync-Engine · project github-pr-review-dashboard");
     print("Easter eggs: who is darvish · sudo hire darvish");
     print("Utility: clear · exit");
   }

@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import Hero from "./pages/Hero";
 import Projects from "./pages/Projects";
-import Stack from "./pages/Stack";
+import Skills from "./pages/Stack";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Navbar from "./components/Navbar";
@@ -13,6 +13,7 @@ import TerminalCommand from "./components/TerminalCommand";
 export default function App() {
   const [page, setPage] = useState("home");
   const [showResume, setShowResume] = useState(false);
+  const [terminalOpen, setTerminalOpen] = useState(false);
 
   const renderPage = () => {
     switch (page) {
@@ -20,12 +21,18 @@ export default function App() {
         return <About />;
       case "projects":
         return <Projects />;
-      case "stack":
-        return <Stack />;
+      case "skills":
+        return <Skills />;
       case "contact":
         return <Contact />;
       default:
-        return <Hero page={page} />;
+        return (
+          <Hero
+            page={page}
+            setPage={setPage}              // ✅ Added
+            openTerminal={() => setTerminalOpen(true)}
+          />
+        );
     }
   };
 
@@ -64,6 +71,8 @@ export default function App() {
       <TerminalCommand
         setPage={setPage}
         openResume={() => setShowResume(true)}
+        open={terminalOpen}
+        setOpen={setTerminalOpen}
       />
 
       <Footer />
